@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Products</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Dashboard Products</h1>
+
+  <!-- SEARCH -->
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Tìm theo title..."
+    oninput="handleSearch()"
+  />
+
+  <!-- SORT -->
+  <div class="sort-buttons">
+    <button onclick="sortByName('asc')">Tên A-Z</button>
+    <button onclick="sortByName('desc')">Tên Z-A</button>
+    <button onclick="sortByPrice('asc')">Giá tăng</button>
+    <button onclick="sortByPrice('desc')">Giá giảm</button>
+  </div>
+
+  <!-- PAGE SIZE -->
+  <div class="page-size">
+    Hiển thị:
+    <select onchange="changePageSize(this.value)">
+      <option value="5">5</option>
+      <option value="10" selected>10</option>
+      <option value="20">20</option>
+    </select>
+    sản phẩm / trang
+  </div>
+
+  <!-- TABLE -->
+  <table>
+    <thead>
+      <tr>
+        <th>Ảnh</th>
+        <th>Tiêu đề</th>
+        <th>Giá</th>
+      </tr>
+    </thead>
+    <tbody id="productTable">
+      <!-- render bằng JS -->
+    </tbody>
+  </table>
+
+  <!-- PAGINATION -->
+  <div class="pagination">
+    <button onclick="prevPage()">Prev</button>
+    <span id="pageInfo">1</span>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
