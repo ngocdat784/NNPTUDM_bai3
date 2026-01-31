@@ -33,9 +33,19 @@ function renderTable() {
   pageData.forEach(product => {
     const tr = document.createElement("tr");
 
+    const imageUrl =
+      Array.isArray(product.images) && product.images.length > 0
+        ? product.images[0]
+        : "https://via.placeholder.com/120";
+
     tr.innerHTML = `
       <td>
-        <img src="${product.images[0]}" alt="${product.title}">
+        <img
+          src="${imageUrl}"
+          alt="${product.title}"
+          loading="lazy"
+          onerror="this.onerror=null;this.src='https://via.placeholder.com/120'"
+        />
       </td>
       <td>${product.title}</td>
       <td>$${product.price}</td>
@@ -46,6 +56,8 @@ function renderTable() {
 
   updatePageInfo();
 }
+
+
 
 /* ================= SEARCH ================= */
 function handleSearch() {
